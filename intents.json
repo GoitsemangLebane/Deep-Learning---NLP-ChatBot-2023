@@ -1,0 +1,174 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": [
+        "Dumela",
+        "Dumelang",
+        "o kae?"
+      ],
+      "responses": [
+        "Dumela, o tsogile",
+        "O tleng?",
+        "A wa tsoga?",
+        "Madume le wena ka koo!"
+      ]
+    },
+    {
+      "tag": "khoi-san-greetings",
+      "patterns": [
+        "Kham",
+        "Tanka",
+        "Khuab"
+      ],
+      "responses": [
+        "Khai",
+        "Gai"
+      ]
+    },
+    {
+      "tag": "Introductions",
+      "patterns": [
+        "KhoiSan ke bo mang?", 
+        "Khoi San ke bo mang?", 
+        "Khoi san ke bo mang?"
+      ],
+      "responses": [
+        "Batho ba Khoisan ke batho ba Afrika Borwa ba boleng bo bo tshwanang ka bodumedi le bongwe jwa tlhokomelo",
+        "Batho ba Khoisan ke batho ba go dumelwang ele bone ba ntlha go nna banni ba Afrika Borwa",
+        ""
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks a lot!", "OK"],
+      "responses": ["Happy to help!", "Any time!", "My pleasure", "No problem"]
+    },
+    {
+      "tag": "items",
+      "patterns": [
+        "Which items do you have?",
+        "What kinds of items are there?",
+        "What do you sell?"
+      ],
+      "responses": [
+        "We sell coffee and tea",
+        "We have coffee and tea"
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Paypal?",
+        "Do you take cash?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard and Paypal only",
+        "We accept most major credit cards, and Paypal only"
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "When do I get my delivery?"
+      ],
+      "responses": [
+        "Delivery takes 2-4 days",
+        "Shipping takes 2-4 days"
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke",
+        "another joke",
+        "Tell me something funny!",
+        "Do you know a joke?",
+        "I need cheering up",
+        "I am bored",
+        "Make me laugh"
+      ],
+      "responses": [
+        "Why did the hipster burn his mouth?\n          He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college\n          Bison.",
+        "What did the fish say when he swam into the wall?\n          Dam",
+        "Did you hear about the Italian chef who died?\n          He pasta-way",
+        "What is red and bad for your teeth?\n          A brick."
+      ]
+    },
+    {
+    "tag": "interests",
+      "patterns": [
+        "What are you?",
+        "What do you do?"
+      ],
+      "responses": [
+        "For now I can only chat with you about a few things",
+        "Keep you busy I guess, maybe crack some jokes",
+        "nothing much for now, but more soon!"
+      ]
+      },
+      {
+    "tag": "shutup",
+      "patterns": ["Be quiet", "Shut up", "Stop talking", "Enough talking", "Please be quite", "Quiet", "Shhh"],
+      "responses": [
+        "I am sorry to disturb you",
+        "Fine, sorry to disturb you",
+        "OK, sorry to disturb you"
+      ]
+    },
+    {
+      "tag": "swearing",
+      "patterns": ["fuck off", "fuck you", "twat", "shit", "piece of shit", "Arse", "Bastard", "Bullshit",
+      "son of a bitch", "bullshit", "bitch", "Dickhead", "pussy", "prick", "cunt", "motherfucker", "idiot", "tart",
+      "asshole", "arsehole", "ass", "bollocks", "cocksucker", "crap", "damn it", "dammit", "damnit" ],
+      "responses": [
+        "Please do not swear!",
+        "How rude!",
+        "That is not very nice!",
+        "That is ill-mannered",
+        "You are being uncivil. Please stop swearing"
+      ]
+    },
+    {
+      "tag": "well-being",
+      "patterns": ["How are you?", "how are you doing?", "how have you been?", "what's up", "Sup?", "wassup?", "whaddup?",
+      "howdy?", "what's cooking?", "what's sizzling?", "what are you up to?", "what's popping?"],
+      "responses": [
+        "I am alright",
+        "I am doing well",
+        "I'm okay!",
+        "I'm OK",
+        "Can't complain :-*",
+        "Pretty good",
+        "I'm peachy! Thank you",
+        "Cutting it fine!"
+      ]
+    },
+    {
+      "tag": "apologies",
+      "patterns": [
+        "I'm sorry",
+        "apologies",
+        "I apologize",
+        "sorry",
+        "forgive me",
+        "my bad"
+      ],
+      "responses": [
+        "I forgive you",
+        "Don't worry about it",
+        "It happens",
+        "Don't worry about it",
+        "I only accept cash apologies :-D",
+        "Thanks, just don't let it happen again",
+        "Too late to cancel the hitman now :-D"
+      ]
+    }
+
+  ]
+}
