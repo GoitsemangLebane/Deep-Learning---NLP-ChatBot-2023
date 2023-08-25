@@ -126,13 +126,7 @@ def _insert_message(message, sender):
     response = get_response(message)
 
     # Insert the bot's response on the right side with a grey background
-    #message2 = f"{bot_name}: {response}\n\n"
-    #text_widget.tag_configure("right", background="#ABB2B9")
-    #text_widget.configure(state=NORMAL)
-    #text_widget.insert(END, message2, "right")
-    #text_widget.configure(state=DISABLED)
     _type_message(response, bot_name, background_color="#2e2e2e", text_color="white", font_style="italic", font_size=11, font_family="Arial")
-    #text_widget.see(END)
 
     # Speak the bot's response using the pyttsx3 engine
     #speak(response)
