@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 from Chat import get_response, bot_name, speak
 import webbrowser
+import time
 
 BG_GRAY = "#ABB2B9"
 BG_COLOR = "#17202a"
@@ -95,6 +96,20 @@ def _on_enter_pressed(event):
     _insert_message(message, "You")
     message_entry.delete(0, END)  # Clear the message entry field
 
+def _type_message(message, sender, background_color, text_color, font_style, font_size, font_family, delay_between_chars=0.05):
+    # Insert the message with the specified background color and text color
+    formatted_message = f"{sender}: {message}\n\n"
+    text_widget.configure(state=NORMAL)
+    text_widget.tag_configure("custom", background=background_color, foreground=text_color, font=(font_family, font_size, font_style))
+
+    for char in formatted_message:
+        text_widget.insert(END, char, "custom")
+        text_widget.see(END)
+        text_widget.update_idletasks()  # Force update of the widget
+        time.sleep(delay_between_chars)
+
+    text_widget.configure(state=DISABLED)
+
 def _insert_message(message, sender):
     if not message:
         return
@@ -105,22 +120,22 @@ def _insert_message(message, sender):
     text_widget.tag_configure("left", background="#EAECEE")
     text_widget.insert(END, message1, "left")
     text_widget.configure(state=DISABLED)
+    #_type_message(message, sender)
 
     # Get and store the bot's response
     response = get_response(message)
 
     # Insert the bot's response on the right side with a grey background
-    message2 = f"{bot_name}: {response}\n\n"
-    text_widget.tag_configure("right", background="#ABB2B9")
-    text_widget.configure(state=NORMAL)
-    text_widget.insert(END, message2, "right")
-    text_widget.configure(state=DISABLED)
-
-    text_widget.see(END)
+    #message2 = f"{bot_name}: {response}\n\n"
+    #text_widget.tag_configure("right", background="#ABB2B9")
+    #text_widget.configure(state=NORMAL)
+    #text_widget.insert(END, message2, "right")
+    #text_widget.configure(state=DISABLED)
+    _type_message(response, bot_name, background_color="#2e2e2e", text_color="white", font_style="italic", font_size=11, font_family="Arial")
+    #text_widget.see(END)
 
     # Speak the bot's response using the pyttsx3 engine
     #speak(response)
-
 
 # message entry
 message_entry = Entry(bottom_label, bg="#B9FFF8", fg='#472D2D', font=FONT)

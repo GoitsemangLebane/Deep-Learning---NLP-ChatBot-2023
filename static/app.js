@@ -31,6 +31,23 @@ class Chatbox {
             chatBox.classList.remove('chatbox--active');
         }
     }
+
+    typeMessage(message, msgObj, chatBox) {
+        let currentCharacterIndex = 0;
+        const typingInterval = 50; // Adjust this value for typing speed
+        const typingTimer = setInterval(() => {
+            const partialMessage = message.substring(0, currentCharacterIndex + 1);
+            msgObj.message = partialMessage;
+            this.updateChatText(chatBox);
+
+            currentCharacterIndex++;
+
+            if (currentCharacterIndex === message.length) {
+                clearInterval(typingTimer);
+                this.updateChatText(chatBox);
+            }
+        }, typingInterval);
+    }
  
     onSendButton(chatBox) {
         const textField = chatBox.querySelector('input');
@@ -53,9 +70,11 @@ class Chatbox {
         })
         .then(response => response.json())
         .then(data => {
-            const msg2 = { name: "HelpR", message: data.answer };
+            const msg2 = { name: "HelpR", message: '' };
             this.messages.push(msg2);
-            this.updateChatText(chatBox);
+
+            this.typeMessage(data.answer, msg2, chatBox);
+
             textField.value = '';
         })
         .catch(error => {
