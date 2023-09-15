@@ -1,5 +1,6 @@
 import pyttsx3
 import time
+import openai
 
 import random
 import json
