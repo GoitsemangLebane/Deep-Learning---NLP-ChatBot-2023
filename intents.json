@@ -15,6 +15,16 @@
       ]
     },
     {
+      "tag": "greetings_response",
+      "patterns": [
+        "Ee, ke a tsoga", "Ee, ke tleng"
+      ],
+      "responses": [
+        "Go a itumedisa abo o tsogile sentle,,nka go thusa yang?",
+        "Go a lebosega, nka go thusa yang?"
+      ]
+    },
+    {
       "tag": "khoi-san-greetings",
       "patterns": [
         "Kham",
@@ -34,9 +44,8 @@
         "Khoi san ke bo mang?"
       ],
       "responses": [
-        "Batho ba Khoisan ke batho ba Afrika Borwa ba boleng bo bo tshwanang ka bodumedi le bongwe jwa tlhokomelo",
-        "Batho ba Khoisan ke batho ba go dumelwang ele bone ba ntlha go nna banni ba Afrika Borwa",
-        ""
+        "Batho ba Khoisan ke batho ba Afrika Borwa ba boleng \n bo bo tshwanang ka bodumedi le bongwe jwa tlhokomelo",
+        "Batho ba Khoisan ke batho ba go dumelwang ele bone \n ba ntlha  go nna banni ba Afrika Borwa"
       ]
     },
     {
@@ -90,6 +99,7 @@
         "Do you know a joke?",
         "I need cheering up",
         "I am bored",
+        "Im bored",
         "Make me laugh"
       ],
       "responses": [

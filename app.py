@@ -71,9 +71,9 @@ tooltip = Tooltip(calendar_label, tooltip_text)
 line = Label(root, width=450, bg='#B9FFF8')
 line.place(relwidth=1, rely=0.07, relheight=0.020)
 
-# text widget
+# text widget for chatbot reply
 text_widget = Text(root, width=20, height=2, bg='#EEEEEE', fg='black', font=FONT, padx=15, pady=10)
-text_widget.place(relheight=0.745, relwidth=1, rely=0.08)
+text_widget.place(relheight=0.745, relwidth=1, rely=0.08) #rely to move the chat downward(height)
 text_widget.configure(cursor="arrow", state=DISABLED)
 
 # scrollbar
@@ -131,7 +131,7 @@ def _insert_message(message, sender):
     # Speak the bot's response using the pyttsx3 engine
     #speak(response)
 
-# message entry
+# message entry for text input
 message_entry = Entry(bottom_label, bg="#B9FFF8", fg='#472D2D', font=FONT)
 message_entry.place(relwidth=0.724, relheight=0.04, rely=0.008, relx=0.011)
 message_entry.focus()
