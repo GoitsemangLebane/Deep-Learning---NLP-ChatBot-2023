@@ -1,8 +1,40 @@
 from tkinter import *
 import tkinter as tk
 from Chat import get_response, bot_name, speak
-import webbrowser
+from user_authentication import register_user, login_user
+from user_authentication import register_user_wrapper, login_user_wrapper
+from tkinter import Entry, Button, Toplevel, Label
 import time
+
+entry_email = None
+entry_password = None
+entry_first_name = None
+entry_last_name = None
+
+# Create a function to open the login dialog
+def open_login_dialog():
+    login_dialog = Toplevel(root)
+    login_dialog.title("Login")
+    global entry_email, entry_password, entry_first_name, entry_last_name
+
+    label_email = Label(login_dialog, text="Email:")
+    label_email.pack()
+
+    entry_email = Entry(login_dialog)
+    entry_email.pack()
+
+    label_password = Label(login_dialog, text="Password:")
+    label_password.pack()
+
+    entry_password = Entry(login_dialog, show="*")
+    entry_password.pack()
+
+    login_button = Button(login_dialog, text="Login", command=lambda: _on_login_pressed(entry_email, entry_password))
+    login_button.pack()
+
+    register_button = Button(login_dialog, text="Register", command=open_registration_dialog)
+    register_button.pack()
+
 
 BG_GRAY = "#ABB2B9"
 BG_COLOR = "#17202a"
@@ -46,10 +78,11 @@ class Tooltip:
             self.tooltip.destroy()
             self.tooltip = None
 
+
 # HEAD LABEL
 def open_calendar(event):
     #  actual link to the external calendar
-    calendar_link = 'your_calendar_link_here'
+    calendar_link = 'https://www.officeholidays.com/calendars/planners/botswana/2023'
     webbrowser.open(calendar_link)
 
 head_label = Label(root, bg='#967E76', fg='white', text='Dumela!', font="Helvetica 12 bold", pady=10)
@@ -70,6 +103,68 @@ tooltip = Tooltip(calendar_label, tooltip_text)
 # tiny divider
 line = Label(root, width=450, bg='#B9FFF8')
 line.place(relwidth=1, rely=0.07, relheight=0.020)
+
+#uhuh/////////////////////////////////////////////////////////////////////
+# Function to handle user login
+def _on_login_pressed(email_entry, password_entry):
+    # Get user input from entry fields
+    email = email_entry.get()
+    password = password_entry.get()
+
+    # Call the login function from user_authentication.py
+    user = login_user_wrapper(email, password)
+
+    if user:
+        # Login successful
+        print("Login successful!")
+        login_dialog.destroy()  # Close the login dialog
+        # You can add code here to enable the main chatbot interface
+
+    else:
+        # Login failed
+        print("Login failed!")
+
+# Function to open the registration dialog
+def open_registration_dialog():
+    registration_dialog = Toplevel(root)
+    registration_dialog.title("Register")
+    global entry_email, entry_password, entry_first_name, entry_last_name
+
+
+    label_email = Label(registration_dialog, text="Email:")
+    label_email.pack()
+
+    entry_email = Entry(registration_dialog)
+    entry_email.pack()
+
+    label_password = Label(registration_dialog, text="Password:")
+    label_password.pack()
+
+    entry_password = Entry(registration_dialog, show="*")
+    entry_password.pack()
+
+    label_first_name = Label(registration_dialog, text="First Name:")
+    label_first_name.pack()
+
+    entry_first_name = Entry(registration_dialog)
+    entry_first_name.pack()
+
+    label_last_name = Label(registration_dialog, text="Last Name:")
+    label_last_name.pack()
+
+    entry_last_name = Entry(registration_dialog)
+    entry_last_name.pack()
+
+    register_button = Button(registration_dialog, text="Register", command=lambda: _on_register_pressed(entry_email, entry_password, entry_first_name, entry_last_name))
+    register_button.pack()
+
+    back_button = Button(registration_dialog, text="Back to Login", command=registration_dialog.destroy)
+    back_button.pack()
+
+# Add a button in your main tkinter window to open the login dialog
+login_button = Button(root, text="Login", command=open_login_dialog)
+login_button.place(relx=0.85, rely=0.012)
+# LOGIN PART END /////////////////////////////////////////////////////////////////////////////////////////////////
 
 # text widget for chatbot reply
 text_widget = Text(root, width=20, height=2, bg='#EEEEEE', fg='black', font=FONT, padx=15, pady=10)
@@ -136,5 +231,27 @@ message_entry = Entry(bottom_label, bg="#B9FFF8", fg='#472D2D', font=FONT)
 message_entry.place(relwidth=0.724, relheight=0.04, rely=0.008, relx=0.011)
 message_entry.focus()
 message_entry.bind("<Return>", _on_enter_pressed)
+
+# Function to handle user registration
+# Function to handle user registration
+# Function to handle user registration
+def _on_register_pressed(email_entry, password_entry, first_name_entry, last_name_entry):
+    # Get user input from entry fields
+    email = email_entry.get()
+    password = password_entry.get()
+    first_name = first_name_entry.get()
+    last_name = last_name_entry.get()
+
+    # Call the registration function from user_authentication.py
+    result = register_user_wrapper(email, password, first_name, last_name)
+
+    if result:
+        # Registration successful
+        print("Registration successful!")
+        registration_dialog.destroy()  # Close the registration dialog
+        # You can add code here to enable the main chatbot interface
+    else:
+        # Registration failed
+        print("Registration failed! Check your database configuration or try a different email address.")
 
 root.mainloop()
