@@ -1,39 +1,9 @@
 from tkinter import *
 import tkinter as tk
 from Chat import get_response, bot_name, speak
-from user_authentication import register_user, login_user
-from user_authentication import register_user_wrapper, login_user_wrapper
 from tkinter import Entry, Button, Toplevel, Label
 import time
 
-entry_email = None
-entry_password = None
-entry_first_name = None
-entry_last_name = None
-
-# Create a function to open the login dialog
-def open_login_dialog():
-    login_dialog = Toplevel(root)
-    login_dialog.title("Login")
-    global entry_email, entry_password, entry_first_name, entry_last_name
-
-    label_email = Label(login_dialog, text="Email:")
-    label_email.pack()
-
-    entry_email = Entry(login_dialog)
-    entry_email.pack()
-
-    label_password = Label(login_dialog, text="Password:")
-    label_password.pack()
-
-    entry_password = Entry(login_dialog, show="*")
-    entry_password.pack()
-
-    login_button = Button(login_dialog, text="Login", command=lambda: _on_login_pressed(entry_email, entry_password))
-    login_button.pack()
-
-    register_button = Button(login_dialog, text="Register", command=open_registration_dialog)
-    register_button.pack()
 
 
 BG_GRAY = "#ABB2B9"
@@ -41,11 +11,12 @@ BG_COLOR = "#17202a"
 TEXT_COLOR = "#EAECEE"
 
 FONT = "Helvetica 12"
+
 FONT_BOLD = "Helvetica 12 bold"
 
 root = tk.Tk()
 root.title("HelpR")
-root.geometry("470x550+320+100")
+root.geometry("470x550+460+100")
 root.resizable(width=False, height=False)
 root.configure(width=470, height=550, bg="#F8EDE3")
 root.iconbitmap(r'icon.ico')
@@ -102,72 +73,20 @@ tooltip = Tooltip(calendar_label, tooltip_text)
 
 # tiny divider
 line = Label(root, width=450, bg='#B9FFF8')
+
 line.place(relwidth=1, rely=0.07, relheight=0.020)
 
-#uhuh/////////////////////////////////////////////////////////////////////
-# Function to handle user login
-def _on_login_pressed(email_entry, password_entry):
-    # Get user input from entry fields
-    email = email_entry.get()
-    password = password_entry.get()
 
-    # Call the login function from user_authentication.py
-    user = login_user_wrapper(email, password)
+# Function to handle user logout
+def logout():
+    root.quit()
 
-    if user:
-        # Login successful
-        print("Login successful!")
-        login_dialog.destroy()  # Close the login dialog
-        # You can add code here to enable the main chatbot interface
+logout_button = Button(root, text="Logout & Quit", command=logout, fg='#fff', bg='#2E2E2E', relief=FLAT)
+logout_button.place(relx=0.04, rely=0.012)
 
-    else:
-        # Login failed
-        print("Login failed!")
-
-# Function to open the registration dialog
-def open_registration_dialog():
-    registration_dialog = Toplevel(root)
-    registration_dialog.title("Register")
-    global entry_email, entry_password, entry_first_name, entry_last_name
-
-
-    label_email = Label(registration_dialog, text="Email:")
-    label_email.pack()
-
-    entry_email = Entry(registration_dialog)
-    entry_email.pack()
-
-    label_password = Label(registration_dialog, text="Password:")
-    label_password.pack()
-
-    entry_password = Entry(registration_dialog, show="*")
-    entry_password.pack()
-
-    label_first_name = Label(registration_dialog, text="First Name:")
-    label_first_name.pack()
-
-    entry_first_name = Entry(registration_dialog)
-    entry_first_name.pack()
-
-    label_last_name = Label(registration_dialog, text="Last Name:")
-    label_last_name.pack()
-
-    entry_last_name = Entry(registration_dialog)
-    entry_last_name.pack()
-
-    register_button = Button(registration_dialog, text="Register", command=lambda: _on_register_pressed(entry_email, entry_password, entry_first_name, entry_last_name))
-    register_button.pack()
-
-    back_button = Button(registration_dialog, text="Back to Login", command=registration_dialog.destroy)
-    back_button.pack()
-
-# Add a button in your main tkinter window to open the login dialog
-login_button = Button(root, text="Login", command=open_login_dialog)
-login_button.place(relx=0.85, rely=0.012)
-# LOGIN PART END /////////////////////////////////////////////////////////////////////////////////////////////////
 
 # text widget for chatbot reply
-text_widget = Text(root, width=20, height=2, bg='#EEEEEE', fg='black', font=FONT, padx=15, pady=10)
+text_widget = Text(root, width=20, height=2, bg='#EEEEEE', fg='black', cursor='hand2', font=FONT, padx=15, pady=10)
 text_widget.place(relheight=0.745, relwidth=1, rely=0.08) #rely to move the chat downward(height)
 text_widget.configure(cursor="arrow", state=DISABLED)
 
