@@ -3,6 +3,21 @@ import tkinter as tk
 from Chat import get_response, bot_name, speak
 from tkinter import Entry, Button, Toplevel, Label
 import time
+import sys
+
+# Check if --username argument is provided
+if '--username' in sys.argv:
+    # Get the index of the --username argument
+    username_index = sys.argv.index('--username')
+    
+    # Get the username from the next argument
+    username = sys.argv[username_index + 1]
+
+    # Now, 'username' contains the username passed from the login app
+    print(f"Welcome, {username}!")
+else:
+    print("No username provided.")
+    username = "Guest"  # Default username if not provided
 
 
 
@@ -56,7 +71,7 @@ def open_calendar(event):
     calendar_link = 'https://www.officeholidays.com/calendars/planners/botswana/2023'
     webbrowser.open(calendar_link)
 
-head_label = Label(root, bg='#967E76', fg='white', text='Dumela!', font="Helvetica 12 bold", pady=10)
+head_label = Label(root, bg='#967E76', fg='white', text=f'Dumela {username}!', font="Helvetica 12 bold", pady=10)
 head_label.place(relwidth=1)
 
 # Load a calendar icon image and create a label with the image
@@ -151,26 +166,5 @@ message_entry.place(relwidth=0.724, relheight=0.04, rely=0.008, relx=0.011)
 message_entry.focus()
 message_entry.bind("<Return>", _on_enter_pressed)
 
-# Function to handle user registration
-# Function to handle user registration
-# Function to handle user registration
-def _on_register_pressed(email_entry, password_entry, first_name_entry, last_name_entry):
-    # Get user input from entry fields
-    email = email_entry.get()
-    password = password_entry.get()
-    first_name = first_name_entry.get()
-    last_name = last_name_entry.get()
-
-    # Call the registration function from user_authentication.py
-    result = register_user_wrapper(email, password, first_name, last_name)
-
-    if result:
-        # Registration successful
-        print("Registration successful!")
-        registration_dialog.destroy()  # Close the registration dialog
-        # You can add code here to enable the main chatbot interface
-    else:
-        # Registration failed
-        print("Registration failed! Check your database configuration or try a different email address.")
 
 root.mainloop()

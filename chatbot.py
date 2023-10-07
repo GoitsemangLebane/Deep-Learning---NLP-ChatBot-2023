@@ -12,7 +12,7 @@ popup = None
 application_opened = False  # Flag to track if the application has been opened
 frame2 = None
 
-def open_main_application():
+def open_main_application(username):
     global popup, application_opened
     popup = customtkinter.CTkFrame(app, bg_color='#2e2e2e', fg_color='#2e2e2e', width=300, height=80)
     popup.place(x=75, y=130)
@@ -25,13 +25,13 @@ def open_main_application():
     time.sleep(10)  # Simulate loading delay (you can adjust this time)
 
     # Open your main application here (replace with your code)
-    start_chatbot()
+    start_chatbot(username)
     application_opened = True  # Set the flag to indicate the application has been opened
     popup.destroy()  # Close the pop-up when loading is complete
 
-def start_chatbot():
+def start_chatbot(username):
     try:
-        subprocess.Popen(['python', 'app.py'])  # Replace 'app.py' with the correct path to your chatbot application file
+        subprocess.Popen(['python', 'app.py', '--username', username])  # Replace 'app.py' with the correct path to your chatbot application file
 
     except Exception as e:
         messagebox.showerror('Error', f'Error starting the chatbot: {str(e)}')
@@ -87,7 +87,7 @@ def login_account():
                 messagebox.showinfo('Success', 'Login successful!')
                 # Call the function to start the chatbot application
                 #frame2.destroy()
-                open_main_application() # open loading progress bar
+                open_main_application(username) # open loading progress bar
             else:
                 messagebox.showerror('Error', 'Invalid Credentials, Try again!')
         else:
