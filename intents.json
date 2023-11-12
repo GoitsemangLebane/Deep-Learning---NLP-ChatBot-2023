@@ -25,6 +25,26 @@
       ]
     },
     {
+      "tag": "question",
+      "patterns": [
+        "O mang",
+        "Ke wena mang",
+        "O eng",
+        "O dira eng",
+        "who are you"
+      ],
+      "responses": [
+        "I am Helpr, a chatbot designed to assist you.",
+        "Ke nna Helpr, mothusi wa gago wa tsa maranyane.",
+        "Helpr here! How can I assist you today?",
+        "Helpr fa! ke ka go thusa jang tsatsieno?",
+        "I'm an AI chatbot called Helpr, ready to help you with your questions.",
+        "Ke roboto ya maranyane e bitswang Helpr, ke ipaakanyeditse go go thusa ka dipotso tsa gago.",
+        "Hello! I'm Helpr, your friendly chatbot. How can I help you?",
+        "I'm Helpr, the chatbot designed to provide information and assistance."
+      ]
+    },
+    {
       "tag": "khoi-san-greetings",
       "patterns": [
         "Kham",
@@ -54,40 +74,45 @@
       "responses": ["Happy to help!", "Any time!", "My pleasure", "No problem"]
     },
     {
-      "tag": "items",
+      "tag": "marriage",
       "patterns": [
-        "Which items do you have?",
-        "What kinds of items are there?",
-        "What do you sell?"
+        "tell me about khoisan marriage",
+        "more on their marriage"
       ],
       "responses": [
-        "We sell coffee and tea",
-        "We have coffee and tea"
+        "Khoi San marriage ceremonies are deeply rooted in tradition, involving rituals that symbolize unity and community.",
+        "Elders play a crucial role in Khoi San weddings, offering wisdom and guidance to the newlyweds.",
+        "Khoi San couples celebrate their unions with dances, feasts, and symbolic ceremonies reflecting the richness of their culture.",
+        "Marriage holds great significance in Khoi San culture, representing the continuation of traditions and the strengthening of community bonds.",
+        "Engagement ceremonies in Khoi San culture often include the exchange of symbolic gifts and the involvement of family members in the celebration."
+      ]
+    },    
+    {
+      "tag": "death",
+      "patterns": [
+        "How do khoisan handles death",
+        "more on their death"
+      ],
+      "responses": [
+        "Khoi San communities commemorate the passing of loved ones through rituals that honor the departed and support grieving family members.",
+        "Mourning practices in Khoi San culture may include communal gatherings, storytelling, and rituals to guide the departed to the afterlife.",
+        "Khoi San funerals involve specific rituals, such as ceremonial dances, prayers, and the sharing of memories.",
+        "Ancestral remembrance is highly significant in Khoi San traditions, with rituals designed to maintain a connection with those who have passed on.",
+        "In Khoi San philosophy, death is often viewed as a transition to another realm, and rituals aim to ensure a peaceful journey for the departed."
       ]
     },
     {
-      "tag": "payments",
+      "tag": "life",
       "patterns": [
-        "Do you take credit cards?",
-        "Do you accept Mastercard?",
-        "Can I pay with Paypal?",
-        "Do you take cash?"
+        "khoisan life",
+        "more on their life"
       ],
       "responses": [
-        "We accept VISA, Mastercard and Paypal only",
-        "We accept most major credit cards, and Paypal only"
-      ]
-    },
-    {
-      "tag": "delivery",
-      "patterns": [
-        "How long does delivery take?",
-        "How long does shipping take?",
-        "When do I get my delivery?"
-      ],
-      "responses": [
-        "Delivery takes 2-4 days",
-        "Shipping takes 2-4 days"
+        "Khoi San individuals follow daily routines that involve activities such as hunting, gathering, and communal gatherings.",
+        "Balancing traditional and modern aspects, Khoi San communities adapt to changing times while preserving cultural practices.",
+        "Nature holds great importance in the daily life of the Khoi San, with a deep connection to the land and its resources.",
+        "Different age groups in Khoi San society often have specific roles, contributing to the overall well-being of the community.",
+        "Spiritual practices, including storytelling, rituals, and dances, are integrated into the daily life of the Khoi San, fostering a sense of community and connection."
       ]
     },
     {

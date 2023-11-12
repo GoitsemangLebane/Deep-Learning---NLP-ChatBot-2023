@@ -137,26 +137,13 @@ def get_random_dad_joke():
 
 def get_health_advice():
     try:
-        # Define the API URL (replace with the actual health-related API URL)
-        url = "https://api.healthprovider.com/advice"
-        # Set any required headers or parameters
-        #headers = {"Authorization": "Bearer YOUR_API_KEY"}
-        # Send an HTTP GET request to the API
-        response = requests.get(url)
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            # Parse the JSON response and extract health advice or information
-            health_data = response.json()
-            advice = health_data.get("advice")
-            if advice:
-                return advice
-            else:
-                return "Sorry, I couldn't fetch health advice at the moment."
-        else:
-            return "Sorry, I couldn't fetch health advice at the moment."
+        url = "https://symptomate.com/interview/0"
+        # Open the URL in a web browser
+        webbrowser.open(url)
+        return "Opening a short symptom assessment for you. Please give your symptoms there!."
     except Exception as e:
-        print("Sorry, I couldn't fetch health advice at the moment.:", str(e))
-        return "Sorry, I couldn't fetch health advice at the moment."
+        print("Sorry, I couldn't open the symptom assessment page. Error:", str(e))
+        return "Sorry, I couldn't open the symptom assessment page at the moment."
 
 def get_response(msg):
     # Check if the user's message is related to a web search
@@ -176,6 +163,16 @@ def get_response(msg):
             response = f"Opening the web browser and searching for '{query}'..."
             speak(response)  # Speak the response
             return response
+    
+    elif any(keyword in msg_lower for keyword in ["not feeling well", "sick", "unwell", "ke a lwala", "ga ke ikutlwe sentle"]):
+        # Define the actual API URL for health advice
+        health_url = "https://symptomate.com/interview/0"
+        # Open the web browser and direct the user to the health advice page
+        webbrowser.open(health_url)
+        # Return a response indicating that the health advice page is being opened
+        response = "Opening the symptom assessment page..."
+        speak(response)  # Speak the response
+        return response
 
     elif "advice" in msg.lower() or "kgakololo" in msg.lower():
         # Call the get_random_advice function to fetch advice
